@@ -37,3 +37,10 @@
 body {
   min-height: 100vh;
 }
+
+@layer base {
+  html {
+    @apply font-gotham;
+    @apply text-light-grey;
+  }
+}
