@@ -9,6 +9,7 @@ export default {
       yellow: "#FFB612",
       red: "#dc0a17",
       green: "#2FC022",
+      "black": "#000000",
     },
   },
   plugins: ["prettier-plugin-tailwindcss"],
