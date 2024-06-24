@@ -1,7 +1,11 @@
 import iconHour from "@/assets/images/icon-hour.png";
 import RadioButton from "./RadioButton";
+import { useState } from "react";
+import Button from "./Button";
 
 const Form = () => {
+  const [results, setResults] = useState<number>(0);
+
   return (
     <div className="border-light-grey border-opacity-25 rounded-md border-[3px] p-4 flex flex-col gap-4">
       <div className="flex items-center gap-2">
@@ -21,6 +25,22 @@ const Form = () => {
         <RadioButton label="Noite" valueKey="night" name="schedule">
           <span>18:01 às 23:00</span>
         </RadioButton>
+        <div className="flex justify-center items-center my-10 flex-wrap gap-6">
+          <div className="basis-full flex justify-between">
+            <div className="flex items-center">
+              <input type="checkbox" id="showClosed" className="mr-2" />
+              <label className="text-dark-grey text-lg" htmlFor="showClosed">
+                Exibir unidades fechadas
+              </label>
+            </div>
+            <span className="text-dark-grey text-lg">
+              Resultados encontrados:{" "}
+              <span className="font-bold"> {results}</span>
+            </span>
+          </div>
+          <Button variant="filled">Encontrar unidade</Button>
+          <Button variant="outlined">Limpar</Button>
+        </div>
       </form>
     </div>
   );
