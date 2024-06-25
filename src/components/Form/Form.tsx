@@ -1,10 +1,34 @@
 import iconHour from "@/assets/images/icon-hour.png";
 import RadioButton from "./RadioButton";
-import { useState } from "react";
 import Button from "./Button";
+import { useQuery } from "react-query";
+import { LocationsResponse } from "@/types/LocationsResponse";
+import spinner from "@/assets/spinner.svg";
 
 const Form = () => {
-  const [results, setResults] = useState<number>(0);
+  const fetchLocations = async (): Promise<LocationsResponse> => {
+    const endpoint = import.meta.env.VITE_LOCATIONS_ENDPOINT;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+
+    if (!data.success) throw new Error("Error when loading locations");
+
+    return {
+      success: data.success,
+      locations: data.locations,
+      currentCountryId: data.current_country_id,
+      wpTotal: data.wp_total,
+    };
+  };
+
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["locations"],
+    queryFn: fetchLocations,
+  });
+
+  if (isError) {
+    console.error(error);
+  }
 
   return (
     <div className="border-light-grey border-opacity-25 rounded-md border-[3px] p-4 flex flex-col gap-4">
@@ -33,9 +57,18 @@ const Form = () => {
                 Exibir unidades fechadas
               </label>
             </div>
+
             <span className="text-dark-grey text-lg">
               Resultados encontrados:{" "}
-              <span className="font-bold"> {results}</span>
+              {data && (
+                <span className="font-bold"> {data.locations.length}</span>
+              )}
+              {isLoading && (
+                <>
+                  <span className="text-light-grey">Carregando</span>
+                  <img src={spinner} className="inline" />
+                </>
+              )}
             </span>
           </div>
           <Button variant="filled">Encontrar unidade</Button>
