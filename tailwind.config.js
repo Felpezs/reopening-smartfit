@@ -4,11 +4,12 @@ export default {
   theme: {
     fontFamily: { gotham: ["gotham", "sans-serif"] },
     colors: {
-      darkGrey: "#333333",
-      lightGrey: "#808080",
+      "dark-grey": "#333333",
+      "light-grey": "#808080",
       yellow: "#FFB612",
       red: "#dc0a17",
       green: "#2FC022",
+      "black": "#000000",
     },
   },
   plugins: ["prettier-plugin-tailwindcss"],
