@@ -1,4 +1,4 @@
-type Schedule = {
+export type Schedule = {
   weekdays: string;
   hour: string;
 };
@@ -7,10 +7,11 @@ type Required = "required" | "recommended";
 
 type Allow = "allowed" | "not_allowed" | "partial";
 
-type Location = {
+export type Location = {
   id: number;
   title: string;
   content: string;
+  opened: boolean;
   mask: Required;
   towel: Required;
   fountain: Allow;
@@ -21,6 +22,5 @@ type Location = {
 export type LocationsResponse = {
   currentCountryId: number;
   locations: Location[];
-  wpTotal: number;
   success: boolean;
 };

@@ -4,12 +4,14 @@ interface RadioButtonProps
   extends InputHTMLAttributes<HTMLInputElement>,
     PropsWithChildren {
   label: string;
+  selectedOption: string
   valueKey: string;
 }
 
 const RadioButton = ({
   label,
   valueKey,
+  selectedOption,
   children,
   ...props
 }: RadioButtonProps) => {
@@ -24,6 +26,7 @@ const RadioButton = ({
           id={id}
           value={valueKey}
           className="scale-150 mr-2"
+          checked={selectedOption == valueKey}
         />
         <label htmlFor={id}>{label}</label>
       </div>
