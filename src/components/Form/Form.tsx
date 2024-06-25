@@ -73,7 +73,7 @@ const Form = () => {
                 id="showClosed"
                 className="mr-2"
                 onChange={(e) => setShowClosed(e.currentTarget.checked)}
-                defaultChecked={showClosed}
+                checked={showClosed}
               />
               <label className="text-dark-grey text-lg" htmlFor="showClosed">
                 Exibir unidades fechadas
