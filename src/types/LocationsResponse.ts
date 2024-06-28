@@ -1,21 +1,19 @@
+import { LegendImages } from "./Legend";
+
 export type Schedule = {
   weekdays: string;
   hour: string;
 };
-
-type Required = "required" | "recommended";
-
-type Allow = "allowed" | "not_allowed" | "partial";
 
 export type Location = {
   id: number;
   title: string;
   content: string;
   opened: boolean;
-  mask: Required;
-  towel: Required;
-  fountain: Allow;
-  lockerRoom: Allow;
+  mask: keyof LegendImages["mask"];
+  towel: keyof LegendImages["towel"];
+  fountain: keyof LegendImages["fountain"];
+  locker_room: keyof LegendImages["lockerRoom"];
   schedules: Schedule[];
 };
 
