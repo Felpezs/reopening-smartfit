@@ -1,49 +1,37 @@
 import iconHour from "@/assets/images/icon-hour.png";
 import Button from "./Button";
-import { useQuery } from "react-query";
-import { LocationsResponse } from "@/types/LocationsResponse";
 import spinner from "@/assets/spinner.svg";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import RadioButtons from "./RadioButtons";
+import { useLocations } from "@/hooks/useLocations";
+import { useLocationsContext } from "@/context/LocationsContext";
 import { filterLocations } from "@/utils/filterLocations";
 
 const Form = () => {
   const [timeInterval, setTimeInterval] = useState<string>("");
   const [showClosed, setShowClosed] = useState<boolean>(false);
+  const { locationsResponse, setLocations } = useLocationsContext();
 
   const cleanInputs = () => {
     setShowClosed(false);
     setTimeInterval("");
   };
 
-  const fetchLocations = async (): Promise<LocationsResponse> => {
-    const endpoint = import.meta.env.VITE_LOCATIONS_ENDPOINT;
-    const response = await fetch(endpoint);
-    const data = await response.json();
-
-    if (!data.success) throw new Error("Error when loading locations");
-
-    return {
-      success: data.success,
-      locations: data.locations,
-      currentCountryId: data.current_country_id,
-    };
-  };
-
-  const { data, isLoading, isError, error, isStale, refetch } = useQuery({
-    queryKey: ["locations"],
-    queryFn: fetchLocations,
-    enabled: false,
-    staleTime: 3 * 60 * 1000, //time in minutes
-  });
+  const { data, isLoading, isError, error, isStale, refetch } = useLocations();
 
   if (isError) {
     console.error(error);
   }
 
-  const locations = data
-    ? filterLocations(data.locations, showClosed, timeInterval)
-    : [];
+  useEffect(() => {
+    if (data) {
+      const filteredData = {
+        ...data,
+        locations: filterLocations(data.locations, showClosed, timeInterval),
+      };
+      setLocations(filteredData);
+    }
+  }, [data, showClosed, timeInterval]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -84,7 +72,9 @@ const Form = () => {
               Resultados encontrados:{" "}
               <span className="font-bold">
                 {" "}
-                {locations ? locations.length : 0}
+                {locationsResponse && !isLoading
+                  ? locationsResponse.locations.length
+                  : 0}
               </span>
               {isLoading && (
                 <>
