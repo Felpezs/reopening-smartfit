@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from "react-query";
 import Form from "./components/Form/Form";
 import Header from "./components/Header";
 import Legend from "./components/Legend/LegendContainer";
@@ -9,7 +8,7 @@ function App() {
   return (
     <div className="flex flex-col items-center">
       <Header />
-      <main className="w-[80%] max-w-screen-lg my-20 flex flex-col gap-10">
+      <main className="my-20 flex w-full max-w-screen-lg flex-col gap-10 px-5 sm:w-[80%] sm:px-0">
         <LocationsProvider>
           <section className="w-full">
             <Form />

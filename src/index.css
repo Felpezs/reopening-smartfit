@@ -44,3 +44,11 @@ body {
     @apply text-light-grey;
   }
 }
+
+@layer utilities {
+  .card_shadow {
+    -webkit-box-shadow: 0px 0px 4px 0px rgba(128, 128, 128, 0.5);
+    -moz-box-shadow: 0px 0px 4px 0px rgba(128, 128, 128, 0.5);
+    box-shadow: 0px 0px 4px 0px rgba(128, 128, 128, 0.5);
+  }
+}

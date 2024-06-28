@@ -1,12 +1,12 @@
 import { LocationsResponse } from "@/types/LocationsResponse";
-import { Dispatch, PropsWithChildren, useState } from "react";
+import { Dispatch, PropsWithChildren, useState, SetStateAction } from "react";
 import { createContext } from "./createContext";
 
 type APIResponse = LocationsResponse | undefined;
 
 type LocationsContextState = {
   locationsResponse: APIResponse;
-  setLocations: Dispatch<APIResponse>;
+  setLocations: Dispatch<SetStateAction<APIResponse>>;
 };
 
 const [useContext, ContextProvider] = createContext<LocationsContextState>();
