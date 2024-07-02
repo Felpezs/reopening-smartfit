@@ -2,8 +2,10 @@ import Logo from "./Logo";
 
 const Header = () => {
   return (
-    <header className="bg-dark-grey w-full h-24 flex items-center justify-center">
-      <Logo />
+    <header className="flex h-24 w-full items-center justify-center bg-dark-grey">
+      <span className="w-44">
+        <Logo />
+      </span>
     </header>
   );
 };

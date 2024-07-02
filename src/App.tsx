@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Legend from "./components/Legend/LegendContainer";
 import Cards from "./components/Card/Cards";
 import { LocationsProvider } from "./context/LocationsContext";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           </section>
         </LocationsProvider>
       </main>
+      <Footer />
     </div>
   );
 }
