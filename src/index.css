@@ -5,25 +5,25 @@
 @font-face {
   font-family: "gotham";
   font-weight: 900;
-  src: url("fonts/gotham-black.woff2");
+  src: url("/fonts/gotham-black.woff2");
 }
 
 @font-face {
   font-family: "gotham";
   font-weight: 800;
-  src: url("fonts/gotham-bold.woff2");
+  src: url("/fonts/gotham-bold.woff2");
 }
 
 @font-face {
   font-family: "gotham";
   font-weight: 400;
-  src: url("fonts/gotham-book.woff2");
+  src: url("/fonts/gotham-book.woff2");
 }
 
 @font-face {
   font-family: "gotham";
   font-weight: 100;
-  src: url("fonts/gotham-light.woff2");
+  src: url("/fonts/gotham-light.woff2");
 }
 
 *,
