@@ -3,10 +3,6 @@ const Logo = () => {
     <svg
       id="Layer_1"
       xmlns="http://www.w3.org/2000/svg"
-      x="0px"
-      y="0px"
-      width={146}
-      height={54}
       viewBox="0 0 146 54"
       xmlSpace="preserve"
     >
