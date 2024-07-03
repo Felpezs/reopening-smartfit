@@ -40,21 +40,21 @@ const Form = () => {
   };
 
   return (
-    <div className="border-light-grey border-opacity-25 rounded-md border-[3px] p-4 flex flex-col gap-4">
+    <div className="flex flex-col gap-4 rounded-md border-[3px] border-light-grey border-opacity-25 p-4">
       <div className="flex items-center gap-2">
         <img src={iconHour} alt="clock" width={35} />
         <h2 className="text-light-grey">Horário</h2>
       </div>
       <form className="flex flex-col gap-3" onSubmit={(e) => handleSubmit(e)}>
-        <h3 className="text-3xl font-thin border-b-[2px] border-light-grey border-opacity-25 p-2 mb-2">
+        <h3 className="mb-2 border-b-[2px] border-light-grey border-opacity-25 p-2 text-3xl font-thin">
           Qual período quer treinar?
         </h3>
         <RadioButtons
           timeInterval={timeInterval}
           setTimeInterval={setTimeInterval}
         />
-        <div className="flex justify-center items-center my-10 flex-wrap gap-6">
-          <div className="basis-full flex justify-between">
+        <div className="my-10 flex flex-wrap items-center justify-center gap-6">
+          <div className="flex basis-full justify-between">
             <div className="flex items-center">
               <input
                 type="checkbox"
@@ -63,12 +63,12 @@ const Form = () => {
                 onChange={(e) => setShowClosed(e.currentTarget.checked)}
                 checked={showClosed}
               />
-              <label className="text-dark-grey text-lg" htmlFor="showClosed">
+              <label className="text-lg text-dark-grey" htmlFor="showClosed">
                 Exibir unidades fechadas
               </label>
             </div>
 
-            <span className="text-dark-grey text-lg">
+            <span className="text-lg text-dark-grey">
               Resultados encontrados:{" "}
               <span className="font-bold">
                 {" "}
