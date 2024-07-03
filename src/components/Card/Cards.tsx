@@ -6,7 +6,7 @@ const Cards = () => {
   const { locationsResponse } = useLocationsContext();
 
   return (
-    <div className="flex flex-wrap justify-center gap-5">
+    <div className="flex flex-wrap justify-center gap-5" role="list">
       {locationsResponse &&
         locationsResponse.locations.map((location) => {
           if (location.opened) {
